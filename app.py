@@ -1,5 +1,6 @@
 from flask import Flask, flash, redirect , render_template, request, session , url_for
 # from datetime import timedelta
+import sqlalchemy
 
 
 app = Flask(__name__);
@@ -16,10 +17,12 @@ def login():
         # session.permanent = True;
         name = request.form["username"];
         session["user"] = name;
+        flash("Login Successful")
         return redirect(url_for("user" , usr=name))
     else:
         if "user" in session:
-            return redirect(url_for(user));
+            flash("Already Logged In")
+            return redirect(url_for("user"));
         return render_template("login.html");
         
 
@@ -27,9 +30,10 @@ def login():
 def user():
     if "user" in session:
         user = session["user"];
-        return f'<h2>Hello { user }</h2>';
+        return render_template("user.html" , user = user);
     else:
-        return redirect(url_for(login));
+        flash("You are not logged in")
+        return redirect(url_for("login"));
 
 @app.route("/logout")
 def logout():
