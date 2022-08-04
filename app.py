@@ -1,10 +1,10 @@
-from flask import Flask, redirect , render_template, request, session , url_for
-from datetime import timedelta
+from flask import Flask, flash, redirect , render_template, request, session , url_for
+# from datetime import timedelta
 
 
 app = Flask(__name__);
-app.secret_key = "ifyoureadthisyougayyy"
-app.permanent_session_lifetime = timedelta(daye = 4);
+app.secret_key = "samplekeymessageoverhere"
+# app.permanent_session_lifetime = timedelta(daye = 4);
 
 @app.route('/')
 def home():
@@ -13,7 +13,7 @@ def home():
 @app.route("/login" , methods = ['POST' , 'GET'])
 def login():
     if request.method == "POST":
-        session.permanent = True;
+        # session.permanent = True;
         name = request.form["username"];
         session["user"] = name;
         return redirect(url_for("user" , usr=name))
@@ -33,6 +33,7 @@ def user():
 
 @app.route("/logout")
 def logout():
+    flash("You have been logged out successfully!")
     session.pop("user" , None);
     return redirect(url_for("login"));
 
