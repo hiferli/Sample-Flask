@@ -12,5 +12,12 @@ User Page
             {% endfor %}
         {% endif %}
     {% endwith %}
-<p>Welcome {{user}}</p>
+
+<h2>Welcome {{user}}</h2>
+
+<form action="#" method="POST">
+    <input type="email" name="email" placeholder="Enter you email address" value="{{email if email}}">
+    <input type="submit" type="submit">
+</form>
+
 {% endblock %}
