@@ -1,7 +1,7 @@
-from flask import Flask, flash, redirect , render_template, request, session , url_for
+from flask import Flask, flash, redirect , render_template, request, session , url_for , Blueprint
 # from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Integer
+from home import homePage
 
 
 app = Flask(__name__);
@@ -21,9 +21,11 @@ class users(database.Model):
         self.name = name;
         self.email = email;
 
-@app.route('/')
-def home():
-    return render_template("index.html");
+app.register_blueprint(homePage , url_prefix="/")
+
+# @app.route('/')
+# def home():
+#     return render_template("index.html");
 
 @app.route("/login" , methods = ['POST' , 'GET'])
 def login():
