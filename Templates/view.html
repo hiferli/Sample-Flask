@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+View Database
+{% endblock %}
+
+{% block body %}
+    {% for item in values %}
+        <ul> 
+            <li>Name: {{item.name}}</li>
+            <li>Email: {{item.email}}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
