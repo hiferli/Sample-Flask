@@ -7,8 +7,7 @@ if __name__ == "__main__":
     database = client['Sample']
     collection = database['Sample Collection'];
 
+    deleteData = {"Name" : "Joshi"};
 
-    previous_data = {"Name" : "Ishaan"};
-    next_data = {"$set" : {"Name" : "Joshi"}};
-
-    collection.update_many(previous_data , next_data);
+    count = collection.delete_many(deleteData);
+    print(count.deleted_count);
