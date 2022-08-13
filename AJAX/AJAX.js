@@ -7,7 +7,7 @@ function buttonClickHandler() {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET" , "Ishaan.txt" , true);
+    xhr.open("GET" , "https://jsonplaceholder.typicode.com/todos/1" , true);
 
     xhr.onprogress = function () {
         console.log("On Progress")
