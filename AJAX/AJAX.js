@@ -7,15 +7,16 @@ function buttonClickHandler() {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET" , "https://jsonplaceholder.typicode.com/todos/1" , true);
+    xhr.open("POST" , "	https://dummy.restapiexample.com/api/v1/create" , true);
+    xhr.getResponseHeader("Content-type" , "application/json")
 
     xhr.onprogress = function () {
         console.log("On Progress")
     }
 
-    xhr.onreadystatechange = function () {
-        console.log("State Change Code: " + (xhr.readyState))
-    }
+    // xhr.onreadystatechange = function () {
+    //     console.log("State Change Code: " + (xhr.readyState))
+    // }
 
     xhr.onload = function () {
         if(this.status === 200){
@@ -25,5 +26,6 @@ function buttonClickHandler() {
         }
     }
 
-    xhr.send();
+    parameters_json = {"name":"testSample","salary":"123","age":"23"};
+    xhr.send(parameters_json);
 }
