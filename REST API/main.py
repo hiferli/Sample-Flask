@@ -25,7 +25,7 @@ def palindrome(n):
             result = {
                 "Number": int(n),
                 "isPalindrome": True
-            }
+            }   
         else:
             result = {
                 "Number": int(n),
